@@ -12,7 +12,13 @@ public class ShuffleAnalyzer {
     }
 
     normalize(chanceBuckets, runs);
-    System.out.println(Arrays.toString(chanceBuckets));
+    System.out.print("[");
+    System.out.printf("%.4f", chanceBuckets[0]);
+    for (int i = 1; i < chanceBuckets.length; i++) {
+      System.out.print(", ");
+      System.out.printf("%.4f", chanceBuckets[i]);
+    }
+    System.out.println("]");
   }
 
   private static void updateChanceBuckets(double[] chanceBuckets, Deck d) {

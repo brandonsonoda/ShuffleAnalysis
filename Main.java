@@ -1,6 +1,9 @@
 public class Main {
   public static void main(String[] args) {
-    ShuffleAnalyzer.analyze(deck -> Main.riffleShuffle(deck, 7), 52, 9000);
+    System.out.println();
+    ShuffleAnalyzer.analyze(deck -> Main.riffleShuffle(deck, 0), 40, 999000);
+    System.out.println();
+    ShuffleAnalyzer.analyze(deck -> Main.computerShuffle(deck), 40, 999000);
   }
 
   private static void computerShuffle(Deck d) {
@@ -23,6 +26,7 @@ public class Main {
       while (fill < buffer.length) {
         int peel;
         peel = 1 + (int) (3 * Math.random());
+        // Half the time start with second half (i.e. peel 0 off the first half)
         if (fill == 0 && Math.random() < 0.5) {
           peel = 0;
         }
