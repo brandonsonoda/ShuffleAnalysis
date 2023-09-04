@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Deck {
-  private final int[] cards;
+  final int[] cards;
 
   public Deck(int deckSize) {
     cards = new int[deckSize];
