@@ -1,9 +1,6 @@
 public class Main {
   public static void main(String[] args) {
-    System.out.println();
-    ShuffleAnalyzer.analyze(deck -> Main.riffleShuffle(deck, 0), 40, 999000);
-    System.out.println();
-    ShuffleAnalyzer.analyze(deck -> Main.computerShuffle(deck), 40, 999000);
+    ShuffleAnalyzer.analyze(deck -> MtgShuffle.shuffle(deck, 9), 40, 999999);
   }
 
   private static void computerShuffle(Deck d) {
@@ -18,7 +15,7 @@ public class Main {
   private static void riffleShuffle(Deck d, int times) {
     int[] buffer = new int[d.cards.length];
     // Assume perfect splits
-    for (int n = 0; n < times; n++) {
+    for (int iteration = 0; iteration < times; iteration++) {
       int fill = 0;
       int headSplit = 0;
       int tailSplit = buffer.length / 2;
@@ -34,7 +31,7 @@ public class Main {
           buffer[fill++] = d.cards[headSplit++];
         }
         peel = 1 + (int) (3 * Math.random());
-        for ( int i = 0; i < peel && tailSplit < buffer.length; i++) {
+        for (int i = 0; i < peel && tailSplit < buffer.length; i++) {
           buffer[fill++] = d.cards[tailSplit++];
         }
       }
