@@ -4,9 +4,9 @@ public class ShuffleAnalyzer {
   public static void analyze(Shuffler shuffler, int deckSize, int runs) {
     // How likely a card is likely to end up in this bucket
     double[] chanceBuckets = new double[deckSize];
-
+    Deck d = new Deck(deckSize);
     for (int i = 0; i < runs; i++) {
-      Deck d = new Deck(deckSize);
+      d.order();
       shuffler.shuffle(d);
       updateChanceBuckets(chanceBuckets, d);
     }
