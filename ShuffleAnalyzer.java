@@ -28,12 +28,10 @@ public class ShuffleAnalyzer {
     System.out.printf("Coefficient of variance: %.5f%n", coefficientOfVariation);
     // Print normalized values
     System.out.print("[");
-    // System.out.printf("%.4f", arr[0] / (n * arr.length));
-    System.out.printf("%.4f", arr[0]);// / (n * arr.length));
+    System.out.printf("%.4f", arr[0] / (n * arr.length));
     for (int i = 1; i < arr.length; i++) {
       System.out.print(", ");
-      // System.out.printf("%.4f", arr[i] / (n * arr.length));
-      System.out.printf("%.4f", arr[i]);// / (n * arr.length));
+      System.out.printf("%.4f", arr[i] / (n * arr.length));
     }
     System.out.println("]");
   }
