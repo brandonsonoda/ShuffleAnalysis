@@ -54,8 +54,6 @@ public class MtgShuffle {
     for (int i = 0; i < d.cards.length; i++) {
       d.cards[i] = buffer[i];
     }
-
-    // System.out.printf("Mtg Shuffle: aSize(%s), aPeel(%s), bPeel(%s)%n", aSize, aPeel, bPeel);
   }
 
   static int plusOrMinus(int x) {
