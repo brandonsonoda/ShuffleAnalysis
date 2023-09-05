@@ -11,14 +11,7 @@ public class ShuffleAnalyzer {
       updateChanceBuckets(chanceBuckets, d);
     }
 
-    normalize(chanceBuckets, runs);
-    System.out.print("[");
-    System.out.printf("%.4f", chanceBuckets[0]);
-    for (int i = 1; i < chanceBuckets.length; i++) {
-      System.out.print(", ");
-      System.out.printf("%.4f", chanceBuckets[i]);
-    }
-    System.out.println("]");
+    analyze(chanceBuckets, runs);
   }
 
   private static void updateChanceBuckets(double[] chanceBuckets, Deck d) {
@@ -28,9 +21,22 @@ public class ShuffleAnalyzer {
     }
   }
 
-  private static void normalize(double[] arr, int n) {
-    for (int i = 0; i < arr.length; i++) {
-      arr[i] /= n * arr.length;
+  private static void analyze(double[] arr, int n) {
+    double mean = Arrays.stream(arr).reduce(0, (total, element) -> total + element) / arr.length;
+    double squareOfDifferences = Arrays.stream(arr).reduce(0, (total, element) -> total + Math.pow(element - mean, 2));
+    double coefficientOfVariation = Math.sqrt(squareOfDifferences / arr.length) / mean;
+    System.out.printf("Coefficient of variance: %.5f%n", coefficientOfVariation);
+    /*
+    // Print normalized values
+    System.out.print("[");
+    // System.out.printf("%.4f", arr[0] / (n * arr.length));
+    System.out.printf("%.4f", arr[0]);// / (n * arr.length));
+    for (int i = 1; i < arr.length; i++) {
+      System.out.print(", ");
+      // System.out.printf("%.4f", arr[i] / (n * arr.length));
+      System.out.printf("%.4f", arr[i]);// / (n * arr.length));
     }
+    System.out.println("]");
+    */
   }
 }

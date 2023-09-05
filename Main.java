@@ -1,6 +1,19 @@
 public class Main {
   public static void main(String[] args) {
-    ShuffleAnalyzer.analyze(deck -> MtgShuffle.shuffle(deck, 9), 40, 999999);
+    System.out.println("Computer swap");
+    ShuffleAnalyzer.analyze(Main::computerShuffle, 40, 999999);
+    System.out.println("Riffle shuffle, n = " + 2);
+    ShuffleAnalyzer.analyze(deck -> Main.riffleShuffle(deck, 2), 40, 999999);
+    for (int i = 4; i <= 6; i++) {
+      final int n = i;
+      System.out.println("Riffle shuffle, n = " + n);
+      ShuffleAnalyzer.analyze(deck -> Main.riffleShuffle(deck, n), 40, 999999);
+    }
+    for (int i = 1; i <= 11; i++) {
+      final int n = i;
+      System.out.println("MTG shuffle, n = " + n);
+      ShuffleAnalyzer.analyze(deck -> MtgShuffle.shuffle(deck, n), 40, 999999);
+    }
   }
 
   private static void computerShuffle(Deck d) {
